@@ -1,5 +1,11 @@
-FROM ubuntu:16.04
+FROM phusion/passenger-full
 MAINTAINER Elico Corp <webmaster@elico-corp.com>
+# Set correct environment variables.
+ENV HOME /root
+RUN apt update -y
+RUN apt upgrade -y
+# Use baseimage-docker's init process.
+CMD ["/sbin/my_init"]
 
 # Define build constants
 ENV GIT_BRANCH=master \
